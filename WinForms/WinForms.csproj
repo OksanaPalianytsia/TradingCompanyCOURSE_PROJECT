@@ -119,6 +119,10 @@
       <Project>{AF7F7EAB-3D36-4287-B3B5-C5DFDEA267F4}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dependencies\AppDependencies.csproj">
+      <Project>{B9E1ADBB-0BF3-42D0-8707-34CED34C55DF}</Project>
+      <Name>AppDependencies</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{22CB86B3-E4D8-4D76-AE8D-B0FE6083E11E}</Project>
       <Name>DTO</Name>

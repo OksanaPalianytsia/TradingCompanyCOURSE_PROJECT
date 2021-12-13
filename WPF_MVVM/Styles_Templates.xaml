@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                    Path=(Validation.Errors)/ErrorContent}"/>
+                <Setter Property="Foreground" Value="RoyalBlue"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="fontColorForElement" TargetType="{x:Type TextBox}">
+        <Setter Property="Foreground" Value="RoyalBlue"/>
+    </Style>
+    <Style x:Key="fontColorForElementPassword" TargetType="{x:Type PasswordBox}">
+        <Setter Property="Foreground" Value="RoyalBlue"/>
+    </Style>
+    <ControlTemplate x:Key="validationTemplate">
+        <StackPanel Orientation="Horizontal">
+            <Border BorderBrush="Red" BorderThickness="2">
+                <AdornedElementPlaceholder />
+            </Border>
+            <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+            <AdornedElementPlaceholder/>
+        </StackPanel>
+    </ControlTemplate>
+    
+</ResourceDictionary>

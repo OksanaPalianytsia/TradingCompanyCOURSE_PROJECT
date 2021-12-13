@@ -1,4 +1,5 @@
-﻿using BLL.Concrete;
+﻿using AppDependencies;
+using BLL.Concrete;
 using DAL.ADO;
 using LOG;
 using System;
@@ -16,44 +17,65 @@ namespace WinForms
 {
     public partial class LogInForm : Form
     {
-        static ProductDAL productDAL = new ProductDAL(ConfigurationManager.ConnectionStrings["Shop"].ConnectionString);
-        static OrderDAL orderDAL = new OrderDAL(ConfigurationManager.ConnectionStrings["Shop"].ConnectionString);
-        static ContractDAL contractDAL = new ContractDAL(ConfigurationManager.ConnectionStrings["Shop"].ConnectionString);
-        static ProviderDAL providerDAL = new ProviderDAL(ConfigurationManager.ConnectionStrings["Shop"].ConnectionString);
-        private readonly WarehouseManager ware_manager = new WarehouseManager(productDAL, orderDAL, contractDAL, providerDAL);
-        private readonly UserManager user_manager = new UserManager(productDAL);
-
-        private readonly AuthorisationManager _auth_m;
-        private string login;
-        private string password;
+        private LogInViewModel _loginVM;
 
         protected ILogger _log = new Logger(typeof(LogInForm));
-        public LogInForm(AuthorisationManager auth_m)
+        public LogInForm(LogInViewModel log)
         {
             InitializeComponent();
-            _auth_m = auth_m;
+            _loginVM = log;
             textBoxLIFPassword.PasswordChar = '\u2022';
             _log.Info("'Log IN'  Page loaded");
         }
 
         private void buttonLIFLogIn_Click(object sender, EventArgs e)
         {
-            login = textBoxLIFUsername.Text;
-            password = textBoxLIFPassword.Text;
-            bool result = _auth_m.Login(login, password);
-            switch (result)
+            string login = textBoxLIFUsername.Text;
+            string password = textBoxLIFPassword.Text;
+            bool isUserLoggedIn = _loginVM.LoginFunc(login, password);
+            HandleLogInResult(isUserLoggedIn);           
+        }
+
+        private void HandleLogInResult(bool isUserLoggedIn) 
+        {
+            if (isUserLoggedIn)
             {
-                case false:
-                    UserPage form_Ur = new UserPage(user_manager);
-                    form_Ur.Show();
-                    _log.Info("Go to 'UserPage'");
-                    break;
-                case true:
-                    WarehouseManagerPage form_m = new WarehouseManagerPage(ware_manager);
-                    form_m.Show();
-                    _log.Info("Go to 'WarehouseManagerPage'");
-                    break;
+                DisplayWarehouseManagerPage();
             }
+            else
+            {
+                DisplayUserPage();
+            }
+        }
+
+        private void DisplayWarehouseManagerPage() 
+        {
+            WarehouseManagerPage form_m = new WarehouseManagerPage(_loginVM.dependencies.ware_manager);
+            form_m.Show();
+            _log.Info("Go to 'WarehouseManagerPage'");
+        }
+
+        private void DisplayUserPage()
+        {
+            UserPage form_Ur = new UserPage(_loginVM.dependencies.user_manager);
+            form_Ur.Show();
+            _log.Info("Go to 'UserPage'");
+        }
+
+        public class LogInViewModel
+        {
+            private readonly AuthorisationManager _auth_m;
+            public readonly Dependencies dependencies;
+            public LogInViewModel(Dependencies d) {
+                dependencies = d;
+                _auth_m = d.auth_man;
+
+            }
+
+            public bool LoginFunc(string login, string password)
+            {
+                return _auth_m.Login(login, password);
+            }                       
         }
     }
 }

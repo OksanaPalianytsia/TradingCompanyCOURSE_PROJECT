@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="WPF_MVVM.Views.LogInView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_MVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles_Templates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <StackPanel Margin="30">
+        <StackPanel Margin="15, 35" Orientation="Horizontal">
+            <TextBlock 
+                Margin="10,0,0,0"
+                Text="Username : "
+                FontSize="20" 
+                Width="150">                
+            </TextBlock>
+            <TextBox Style="{StaticResource fontColorForElement}"
+                Margin="10,0,0,0"
+                Text="{Binding UserName}"
+                FontSize="20" 
+                Width="223">
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="15, 35" Orientation="Horizontal">
+            <TextBlock 
+                Margin="10,0,0,0"
+                Text="Password : "
+                FontSize="20" 
+                Width="150">
+            </TextBlock>
+            <PasswordBox Style="{StaticResource fontColorForElementPassword}"
+                PasswordChanged="Password_ChangedInput"
+                Margin="10,0,0,0"
+                FontSize="20" 
+                Width="223">
+            </PasswordBox>
+        </StackPanel>
+        <Button
+        Content="Log In"
+        FontSize="20"
+        Command="{Binding NextScreen}"
+        Width="150" Height="45" />
+    </StackPanel>
+     
+</UserControl>

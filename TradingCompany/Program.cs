@@ -9,22 +9,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms;
+using static WinForms.LogInForm;
+using AppDependencies;
+using System.Windows;
 
 namespace TradingCompany
 {
     class Program
     {
-        [STAThread]
+        //[STAThread]
         static void Main(string[] args)
         {
-            
-            UserDAL user = new UserDAL(ConfigurationManager.ConnectionStrings["Shop"].ConnectionString);
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            AuthorisationManager auth_man = new AuthorisationManager(user);
-            Application.Run(new LogInForm(auth_man));
+            // RunApplication();
         }
+
+        //private static void RunApplication()
+        //{
+        //    var application = new App();
+        //    application.Run();
+        //}
     }
+
+    //class Program
+    //{
+    //    [STAThread]
+    //    static void Main(string[] args)
+    //    {
+
+
+
+    //        Application.EnableVisualStyles();
+    //        Application.SetCompatibleTextRenderingDefault(false);
+
+    //        Dependencies d = new Dependencies();
+
+
+    //        LogInViewModel linvw = new LogInViewModel(d);
+
+
+    //        Application.Run(new LogInForm(linvw));
+    //    }
+
+
+    //}
 }

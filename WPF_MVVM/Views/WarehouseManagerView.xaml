@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="WPF_MVVM.Views.WarehouseManagerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_MVVM.Views"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles_Templates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="0,0,0,-50">
+        <StackPanel Margin="5">
+            <TabControl Margin="10">
+                <TabItem Header="Products" FontSize="15">
+                    <StackPanel Margin="5">
+                        <DataGrid ItemsSource="{Binding Products}"
+                                  Height="300"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="55, 15, 10, 15"
+                                       Text="Sort by : " 
+                                       FontSize="20"
+                                       VerticalAlignment="Center" />
+                            <ComboBox Margin ="5" Width="100" 
+                                      ItemsSource="{Binding Elements}"
+                                      SelectedItem="{Binding SelectedOptionForSort}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center">
+                            </ComboBox>
+                            <Button Name="Sort" 
+                                Margin="5"
+                                    Content="Sort"
+                                    FontSize="20"
+                                    Command="{Binding SortProducts}" 
+                                    Height="30" Width="70" />                          
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="50, 15, 15, 10"
+                                       Text="Find by : " 
+                                       FontSize="20"
+                                       VerticalAlignment="Center" />
+                            <ComboBox Margin ="5" Width="100" 
+                                      ItemsSource="{Binding ElementsForFind}"
+                                      SelectedItem="{Binding SelectedOptionForFind}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center">
+                            </ComboBox>
+                            <TextBox Style="{StaticResource fontColorForElement}"
+                                Margin="10, 15, 15, 15"
+                                       Text="{Binding TextForFind}" 
+                                       FontSize="20"
+                                       VerticalAlignment="Center" Width="80" />
+                            <Button Name="Find"
+                                Margin="5"
+                                    Content="Find"
+                                    FontSize="20"
+                                    Command="{Binding FindProducts}" 
+                                    Height="30" Width="70" />
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Orders" FontSize="15">
+                    <StackPanel Margin="5" Height="300">
+                        <DataGrid ItemsSource="{Binding Orders}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="70, 15, 15, 15"
+                                       Text="ID : " 
+                                       FontSize="20"
+                                       VerticalAlignment="Center" />
+                        <TextBox Style="{StaticResource fontColorForElement}"
+                                 Margin="20, 15, 15, 15"
+                                     Text="{Binding IDOrder}"
+                                     FontSize="20"
+                                     VerticalAlignment="Center" Width="100" />
+                            <Button Margin="5"
+                                    Content="Deactivate"
+                                    FontSize="20"
+                                    Command="{Binding DeactivateOrder}" 
+                                    Height="30" Width="130" />
+                        </StackPanel>
+                        <Button Margin="5"
+                                    Content="Update Order"
+                                    FontSize="20"
+                                    Command="{Binding NextToUpdateContract}" 
+                                    Height="30" Width="130" />                        
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Contracts" FontSize="15">
+                    <StackPanel Margin="5" Height="300">
+                        <DataGrid ItemsSource="{Binding Contracts}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="70, 15, 15, 15"
+                                       Text="ID : " 
+                                       FontSize="20"
+                                       VerticalAlignment="Center" />
+                            <TextBox Style="{StaticResource fontColorForElement}"
+                                 Margin="20, 15, 15, 15"
+                                     Text="{Binding IDContract}"
+                                     FontSize="20"
+                                     VerticalAlignment="Center" Width="100" />
+                            <Button Margin="5"
+                                    Content="Deactivate"
+                                    FontSize="20"
+                                    Command="{Binding DeactivateContract}" 
+                                    Height="30" Width="130" />
+                        </StackPanel>
+                        <Button Margin="5"
+                                    Content="Create Contract"
+                                    FontSize="20"
+                                    Command="{Binding NextToCreateContract}" 
+                                    Height="30" Width="150" />
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Button Margin="5"
+                Content="Back"
+                FontSize="20"
+                Command="{Binding BackToLogIn}" 
+                Height="30" Width="130" />
+            </StackPanel>            
+        </StackPanel>
+    </Grid>
+</UserControl>

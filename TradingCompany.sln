@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms", "WinForms\WinFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOG", "LOG\LOG.csproj", "{98E65FA0-6879-4536-8F85-C5E7FDE18E87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDependencies", "Dependencies\AppDependencies.csproj", "{B9E1ADBB-0BF3-42D0-8707-34CED34C55DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_MVVM", "WPF_MVVM\WPF_MVVM.csproj", "{0C97379A-FD2C-48C1-B48E-753CAE59CDD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{98E65FA0-6879-4536-8F85-C5E7FDE18E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98E65FA0-6879-4536-8F85-C5E7FDE18E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98E65FA0-6879-4536-8F85-C5E7FDE18E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E1ADBB-0BF3-42D0-8707-34CED34C55DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E1ADBB-0BF3-42D0-8707-34CED34C55DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E1ADBB-0BF3-42D0-8707-34CED34C55DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E1ADBB-0BF3-42D0-8707-34CED34C55DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C97379A-FD2C-48C1-B48E-753CAE59CDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C97379A-FD2C-48C1-B48E-753CAE59CDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C97379A-FD2C-48C1-B48E-753CAE59CDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C97379A-FD2C-48C1-B48E-753CAE59CDD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
